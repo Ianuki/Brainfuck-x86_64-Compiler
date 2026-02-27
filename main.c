@@ -36,11 +36,15 @@ int main(int argc, char ** argv) {
         return 1;
     }
 
+    source_code[size] = (char)0;
+
     fread(source_code, 1, size, file);
     fclose(file);
 
     asm_builder builder = compile(source_code);
     printf("%s", builder.content);
+
+    free(source_code);
 
     return 0;
 }
